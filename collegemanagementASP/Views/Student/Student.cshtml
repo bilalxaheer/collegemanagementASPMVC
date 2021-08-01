@@ -1,0 +1,111 @@
+﻿@model collegemanagementASP.Context.newadmission
+
+@{
+    ViewBag.Title = "Student";
+}
+<style>
+    .error{
+        color:red;
+    }
+</style>
+
+<h2>Student</h2>
+
+@using (Html.BeginForm("AddStudent", "Student", FormMethod.Post))
+{
+<div class="container">
+
+    <div class="form-group">
+
+        @Html.HiddenFor(x => x.ID)
+        <label>Name</label>
+       @Html.ValidationMessageFor(x=>x.fname,"", new {@class="error" })
+        @Html.TextBoxFor(x => x.fname, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        <label>Guardian Name</label>
+        @Html.ValidationMessageFor(x => x.gname, "", new { @class = "error" })
+        @Html.TextBoxFor(x => x.gname, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        <label>Gender</label>@Html.ValidationMessageFor(x => x.gender, "", new { @class = "error" })
+        <br />
+       <label>Male</label> @Html.RadioButtonFor(x => x.gender,"Male" ,new { @class = "form-inline" })
+        <label>Female</label>  @Html.RadioButtonFor(x => x.gender, "Female", new { @class = "form-inline" })
+    </div>
+
+    <div class="form-group">
+        @Html.ValidationMessageFor(x => x.dob, "", new { @class = "error" })
+        <label>Date of Birth</label>
+        @Html.TextBoxFor(x => x.dob, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        <label>Mobile</label>
+        @Html.ValidationMessageFor(x => x.mobile, "", new { @class = "error" })
+        @Html.TextBoxFor(x => x.mobile, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        <label>Email</label>
+        @Html.ValidationMessageFor(x => x.email, "", new { @class = "error" })
+        @Html.TextBoxFor(x => x.email, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        <label>Semester</label>
+        @Html.ValidationMessageFor(x => x.semster, "", new { @class = "error" })
+        @Html.DropDownListFor(x => x.semster ,new List<SelectListItem> {
+               new SelectListItem{ Text="1st Semester"},
+               new SelectListItem{ Text="2nd Semester"},
+               new SelectListItem{ Text="3rd Semester"},
+               new SelectListItem{ Text="4th Semester"},
+               new SelectListItem{ Text="5th Semester"},
+               new SelectListItem{ Text="6th Semester"},
+               new SelectListItem{ Text="7th Semester"},
+               new SelectListItem{ Text="8th Semester"},
+
+       } , new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        <label>Programming</label>
+        @Html.ValidationMessageFor(x => x.prog, "", new { @class = "error" })
+       @Html.DropDownListFor(x => x.prog, new List<SelectListItem> {
+               new SelectListItem{ Text="HTML"},
+               new SelectListItem{ Text="CSS"},
+               new SelectListItem{ Text="JS"},
+               new SelectListItem{ Text="PHP"},
+               new SelectListItem{ Text="ASP.NET MVC"},
+               new SelectListItem{ Text="PYTHON"},
+
+
+       }, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        <label>School Name</label>
+        @Html.ValidationMessageFor(x => x.sname, "", new { @class = "error" })
+        @Html.TextBoxFor(x => x.sname, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        <label>Duration</label>
+        @Html.ValidationMessageFor(x => x.address, "", new { @class = "error" })
+        @Html.TextBoxFor(x => x.duration, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        <label>Address</label>
+        @Html.TextAreaFor(x => x.address, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+       <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="reset" class="btn btn-danger">Cancel</button>
+    </div>
+
+    </div>
+
+    }

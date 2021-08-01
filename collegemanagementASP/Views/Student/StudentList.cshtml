@@ -1,0 +1,48 @@
+﻿@model List<collegemanagementASP.Context.newadmission>
+@{
+    ViewBag.Title = "StudentList";
+}
+
+<h2>StudentList</h2>
+
+<table class=" table table-hover">
+    <tr>
+
+        <th>Name</th>
+        <th>Guardian Name</th>
+        <th>Gender</th>
+        <th>DOB</th>
+        <th>Mobile</th>
+        <th>Email</th>
+        <th>Semester</th>
+        <th>Program</th>
+        <th>School Name</th>
+        <th>Duration</th>
+        <th>Address</th>
+        <th>Action</th>
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.fname</td>
+            <td>@item.gname</td>
+            <td>@item.gender</td>
+            <td>@item.dob</td>
+            <td>@item.mobile</td>
+            <td>@item.email</td>
+            <td>@item.semster</td>
+            <td>@item.prog</td>
+            <td>@item.sname</td>
+            <td>@item.duration</td>
+            <td>@item.address</td>
+            <td>
+                <a href="@Url.Action("Student", new { item.ID, item.fname, item.gname, item.gender, item.dob, item.mobile, item.email, item.semster, item.prog, item.sname, item.duration, item.address })" class="btn btn-success">Edit</a>
+                <a href="@Url.Action("Delete", new { item.ID })" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+    }
+
+</table>
+
